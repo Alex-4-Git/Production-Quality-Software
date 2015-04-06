@@ -8,7 +8,7 @@ import java.util.ArrayList;
 /**
  * The Class AddressList.
  */
-class AddressList implements Serializable{
+public class AddressList implements Serializable{
 	
 	/** The list. */
 	private ArrayList<Address> list = new ArrayList<Address>();
@@ -23,7 +23,9 @@ class AddressList implements Serializable{
 	 */
 	public boolean match_address(String z, String s, String c){
 		for(Address a: list){
-			if(a.address_match(z, s, c)) return true;
+			if(a.address_match(z, s, c)) {
+				return true;
+			}
 		}
 		return false;
 	}
@@ -35,7 +37,9 @@ class AddressList implements Serializable{
 	 * @param a: the address
 	 */
 	public void add(Address a){
-		if(a.isValid()) list.add(a);
+		if(a.isValid()) {
+			list.add(a);
+		}
 	}
 	
 	/**
@@ -44,7 +48,9 @@ class AddressList implements Serializable{
 	 * @param a: the address
 	 */
 	public void delete(Address a){
-		if(list.contains(a)) list.remove(a);
+		if(list.contains(a)) {
+			list.remove(a);
+		}
 	}
 	
 	/**
@@ -59,7 +65,8 @@ class AddressList implements Serializable{
 	}
 	
 	/**
-	 * Edits the address by index. Index starts from 1. If index is out of boundary, nothing will happen.
+	 * Edits the address by index. Index starts from 1. 
+	 * If index is out of boundary, nothing will happen.
 	 *
 	 * @param index: the index
 	 * @param t: the type

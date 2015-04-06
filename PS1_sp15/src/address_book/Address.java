@@ -9,7 +9,7 @@ import java.io.Serializable;
 /**
  * The Class Address.
  */
-class Address implements Serializable{
+public class Address implements Serializable{
 	
 	/** The type. */
 	private Type type=Type.Home;
@@ -38,12 +38,16 @@ class Address implements Serializable{
 	 */
 	public Address(Type t, String z, String s, String c){
 		if(t!=null) type=t;
-		if(z.matches(".*\\S.*"))
+		if(z.matches(".*\\S.*")){
 			set_zip_code(z.trim());
-		if(s.matches(".*\\S.*"))
+		}
+		if(s.matches(".*\\S.*")){
 			set_street(s.trim());
-		if(c.matches(".*\\S.*"))
+		}
+		if(c.matches(".*\\S.*")){
 			set_city(c.trim());
+		}
+			
 	}
 	
 	/**
@@ -65,7 +69,9 @@ class Address implements Serializable{
 	 * @return true, if match is successful
 	 */
 	public boolean address_match(String z, String s, String c){
-		if(z==""&&s==""&&c=="") return false;
+		if(z==""&&s==""&&c=="") {
+			return false;
+		}
 		return zip_code_match(z)&&street_match(s)&&city_match(c);
 	}
 	
@@ -105,8 +111,9 @@ class Address implements Serializable{
 	 * @param x: the new _zip_code
 	 */
 	public  void set_zip_code(String x){
-		if(x.matches(".*\\S.*"))
+		if(x.matches(".*\\S.*")){
 			zip_code = x.trim();
+		}
 	}
 	
 	/**
@@ -115,8 +122,10 @@ class Address implements Serializable{
 	 * @param x: the new _street
 	 */
 	public  void set_street(String x){
-		if(x.matches(".*\\S.*"))
+		if(x.matches(".*\\S.*")){
 			street = x.trim();
+		}
+			
 	}
 	
 	/**
@@ -125,8 +134,10 @@ class Address implements Serializable{
 	 * @param s: the new _city
 	 */
 	public void set_city(String s){
-		if(s.matches(".*\\S.*"))
+		if(s.matches(".*\\S.*")){
 			city = s.trim();
+		}
+			
 	}
 	
 	/**

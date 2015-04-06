@@ -8,7 +8,7 @@ import java.io.Serializable;
 /**
  * The Class Email.
  */
-class Email implements Serializable{
+public class Email implements Serializable{
 	
 	/** The type. */
 	private Type type;
@@ -25,8 +25,10 @@ class Email implements Serializable{
 	public Email(Type t, String e){
 		if(t!=null) type =t;
 		else type = Type.Home;
-		if(e.matches(".*\\S.*"))
+		if(e.matches(".*\\S.*")){
 			email = e.trim();
+		}
+			
 	}
 	
 	/**
@@ -35,8 +37,10 @@ class Email implements Serializable{
 	 * @param e: the email
 	 */
 	public Email(String e){
-		if(e.matches(".*\\S.*"))
+		if(e.matches(".*\\S.*")){
 			email = e.trim();
+		}
+			
 		type=Type.Home;
 	}
 	
@@ -75,8 +79,10 @@ class Email implements Serializable{
 	 * @param t: the new _type
 	 */
 	public void set_type(Type t){
-		if(type!=null)
+		if(type!=null){
 			type = t;
+		}
+			
 	}
 	
 	/**
@@ -85,8 +91,10 @@ class Email implements Serializable{
 	 * @param e: the new _email
 	 */
 	public void set_email(String e){
-		if(e.matches(".*\\S.*"))
+		if(e.matches(".*\\S.*")){
 			email = e.trim();
+		}
+			
 	}
 	
 }

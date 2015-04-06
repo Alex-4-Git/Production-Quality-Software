@@ -7,7 +7,7 @@ import java.util.ArrayList;
 /**
  * The Class EmailList.
  */
-class EmailList implements Serializable{
+public class EmailList implements Serializable{
 	
 	/** The list. */
 	private ArrayList<Email> list = new ArrayList<>();
@@ -18,7 +18,9 @@ class EmailList implements Serializable{
 	 * @param e the e
 	 */
 	public void add(Email e){
-		if(e.get_email()!="") list.add(e);
+		if(e.get_email()!="") {
+			list.add(e);
+		}
 	}
 	
 	/**
@@ -27,7 +29,9 @@ class EmailList implements Serializable{
 	 * @param e: the email
 	 */
 	public void delete(Email e){
-		if(list.contains(e)) list.remove(e);
+		if(list.contains(e)) {
+			list.remove(e);
+		}
 	}
 	
 	/**
@@ -49,7 +53,9 @@ class EmailList implements Serializable{
 	 */
 	public boolean match_email(String s){
 		for(Email e: list){
-			if(e.email_match(s)) return true;
+			if(e.email_match(s)) {
+				return true;
+			}
 		}
 		return false;
 	}
@@ -99,7 +105,9 @@ class EmailList implements Serializable{
 	 */
 	public boolean email_match(String e){
 		for(Email i: list){
-			if(i.email_match(e)) return true;
+			if(i.email_match(e)) {
+				return true;
+			}
 		}
 		return false;
 	}

@@ -12,8 +12,9 @@ import sun.font.CreatedFontTracker;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class AddressBook. This is the only class which can be used by users. Users can create empty address 
- * book, add entry, delete entry, edit entry, search contacts by name, email, phone number, note or address.
+ * The Class AddressBook. This is the only class which can be used by users. 
+ * Users can create empty address book, add entry, delete entry, edit entry, 
+ * search contacts by name, email, phone number, note or address.
  * Users also can save address book into a file or read address book from a file.
  */
 public class AddressBook implements Serializable{
@@ -41,8 +42,8 @@ public class AddressBook implements Serializable{
 	 * @param street: the street
 	 * @param city: the city
 	 */
-	public void CreateEntry(String name, String phoneNumber, String note, Type email_type, String email,
-			Type address_type, String zip_cod, String street, String city){
+	public void createEntry(String name, String phoneNumber, String note, Type email_type, 
+			String email,Type address_type, String zip_cod, String street, String city){
 		Entry entry = new Entry.Builder(name).phoneNumber(phoneNumber).note(note).email
 				(email_type,email).address(address_type, zip_cod, street, city).build();
 		contacts.add(entry);
@@ -67,7 +68,9 @@ public class AddressBook implements Serializable{
 	 */
 	public void removeEntry(int index){
 		index--;
-		if(index>=0&&index<contacts.size()) contacts.remove(index);
+		if(index>=0&&index<contacts.size()) {
+			contacts.remove(index);
+		}
 	}
 	
 	/**
@@ -88,7 +91,9 @@ public class AddressBook implements Serializable{
 	public ArrayList<Entry> search_by_name(String n){
 		ArrayList<Entry> result = new ArrayList<Entry>();
 		for(Entry en: contacts){
-			if(en.match_name(n)) result.add(en);
+			if(en.match_name(n)) {
+				result.add(en);
+			}
 		}
 		return result;
 	}
@@ -102,7 +107,9 @@ public class AddressBook implements Serializable{
 	public ArrayList<Entry> search_by_phonenumber(String n){
 		ArrayList<Entry> result = new ArrayList<Entry>();
 		for(Entry en: contacts){
-			if(en.match_phoneNum(n)) result.add(en);
+			if(en.match_phoneNum(n)) {
+				result.add(en);
+			}
 		}
 		return result;
 	}
@@ -116,7 +123,9 @@ public class AddressBook implements Serializable{
 	public ArrayList<Entry> search_by_note(String n){
 		ArrayList<Entry> result = new ArrayList<Entry>();
 		for(Entry en: contacts){
-			if(en.match_note(n)) result.add(en);
+			if(en.match_note(n)) {
+				result.add(en);
+			}
 		}
 		return result;
 	}
@@ -130,7 +139,9 @@ public class AddressBook implements Serializable{
 	public ArrayList<Entry> search_by_email(String n){
 		ArrayList<Entry> result = new ArrayList<Entry>();
 		for(Entry en: contacts){
-			if(en.match_email(n)) result.add(en);
+			if(en.match_email(n)) {
+				result.add(en);
+			}
 		}
 		return result;
 	}
@@ -146,7 +157,9 @@ public class AddressBook implements Serializable{
 	public ArrayList<Entry> search_by_address(String z, String s, String c){
 		ArrayList<Entry> result = new ArrayList<Entry>();
 		for(Entry en: contacts){
-			if(en.match_address(z, s, c)) result.add(en);
+			if(en.match_address(z, s, c)) {
+				result.add(en);
+			}
 		}
 		return result;
 	}
@@ -291,6 +304,9 @@ public class AddressBook implements Serializable{
 		return (AddressBook) objectInputStream.readObject();
 	}
 	
-
+	public static void main(String[] args){
+		AddressBook a=new AddressBook();
+		a.quickCreate("dd", null);
+	}
 
 }

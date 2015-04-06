@@ -8,7 +8,7 @@ import java.util.ArrayList;
 /**
  * The Class Entry. Each entry is one contact record.
  */
-class Entry implements Serializable{
+public class Entry implements Serializable{
 	
 	/** The name. */
 	private String name;
@@ -49,12 +49,19 @@ class Entry implements Serializable{
 		/**
 		 * Instantiates a new builder.
 		 *
-		 * @param n: the name. Name is a required field. If name only consist of white spaces, exception will be thrown
+		 * @param n: the name. Name is a required field. If name only consist of white spaces, 
+		 * exception will be thrown
 		 */
 		public Builder (String n){
-			if(n.matches(".*\\S.*"))
-				name = n.trim();
-			else throw new IllegalArgumentException();
+			if(n==null){
+				throw new IllegalArgumentException();
+			}
+			if(n.matches(".*\\S.*")){
+				name = n;
+			}
+			else {
+				throw new IllegalArgumentException();
+			}
 		}
 		
 		/**
@@ -64,8 +71,13 @@ class Entry implements Serializable{
 		 * @return the builder
 		 */
 		public Builder phoneNumber(String n){
-			if(n.matches(".*\\S.*"))
-				phoneNumber = n.trim();
+			if(n==null){
+				throw new IllegalArgumentException();
+			}
+			if(n.matches(".*\\S.*")){
+				phoneNumber = n;
+			}
+				
 			return this;
 		}
 		
@@ -77,6 +89,9 @@ class Entry implements Serializable{
 		 * @return the builder
 		 */
 		public Builder email(Type t, String n){
+			if(n==null){
+				throw new IllegalArgumentException();
+			}
 			Email email = new Email(t,n);
 			email_list.add(email);
 			return this;
@@ -89,6 +104,9 @@ class Entry implements Serializable{
 		 * @return the builder
 		 */
 		public Builder email(String n){
+			if(n==null){
+				throw new IllegalArgumentException();
+			}
 			Email email = new Email(n);
 			email_list.add(email);
 			return this;
@@ -104,8 +122,13 @@ class Entry implements Serializable{
 		 * @return the builder
 		 */
 		public Builder address(Type t, String z, String s, String c){
+			if(z==null||s==null||c==null){
+				throw new IllegalArgumentException();
+			}
 			Address address = new Address(t,z,s,c);
-			if (address.isValid()) address_list.add(address);
+			if (address.isValid()) {
+				address_list.add(address);
+			}
 			return this;
 		}
 		
@@ -151,8 +174,9 @@ class Entry implements Serializable{
 	 * @param n: the new _name
 	 */
 	public void set_name(String n){
-		if(n.matches(".*\\S.*"))
+		if(n.matches(".*\\S.*")){
 			name = n.trim();
+		}
 	}
 	
 	/**
@@ -161,8 +185,10 @@ class Entry implements Serializable{
 	 * @param n: the new _phone number
 	 */
 	public void set_phoneNumber(String n){
-		if(n.matches(".*\\S.*"))
+		if(n.matches(".*\\S.*")){
 			phoneNumber = n.trim();
+		}
+			
 	}
 	
 	/**
@@ -183,8 +209,12 @@ class Entry implements Serializable{
 	 * @param s: the email
 	 */
 	public void edit_email(int index, Type t, String s){
-		if(email_list.get_length()==0) email_list.add(new Email(t,s));
-		else email_list.edit(index, t, s);
+		if(email_list.get_length()==0) {
+			email_list.add(new Email(t,s));
+		}
+		else {
+			email_list.edit(index, t, s);
+		}
 	}
 	
 	/**
